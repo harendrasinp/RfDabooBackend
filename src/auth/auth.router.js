@@ -1,9 +1,11 @@
 import express from "express";
+import AuthController from "./auth.controller.js";
 
-const homeController=express.Router();
+const homeRouter=express.Router();
+const authController=new AuthController();
 
-homeController.get("/",(req,res)=>{
-    res.send("welcome to the home page");
+homeRouter.post("/",(req,res)=>{
+    authController.newUser(req,res)
 })
 
-export default homeController;
+export default homeRouter;
